@@ -3,7 +3,7 @@
 
 Name:           %{fontname}-fonts
 Version:        2.4.5
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Free Telugu font
 
 Group:          User Interface/X
@@ -18,6 +18,7 @@ Requires:       fontpackages-filesystem
 Patch1: bug-549319-578040.patch 
 Patch2: bug-588261.patch
 Patch3: bug-621136.patch
+Patch4: bug-691297.patch
 Obsoletes: lohit-fonts-common < %{version}-%{release}
 
 %description
@@ -28,7 +29,8 @@ This package provides a free Telugu truetype/opentype font.
 %setup -q -n %{fontname}-%{version} 
 %patch1 -p1 -b .1-fix-font-conf
 %patch2 -p1 -b .2-hyphen-fix
-%patch3 -p1 -b .2-rendering-cut-fix
+%patch3 -p1 -b .3-rendering-cut-fix
+%patch4 -p1 -b .4-added-rupee-symbol
 
 %build
 make
@@ -58,6 +60,9 @@ rm -fr %{buildroot}
 
 
 %changelog
+* Wed Jun 06  2011 Pravin Satpute <psatpute@redhat.com> - 2.4.5-5
+- Resolves: bug 691297
+
 * Tue Aug 10  2010 Pravin Satpute <psatpute@redhat.com> - 2.4.5-4
 - Resolves: bug 621136
 

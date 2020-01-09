@@ -3,13 +3,14 @@
 
 Name:           %{fontname}-fonts
 Version:        2.4.5
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Free Telugu font
 
 Group:          User Interface/X
 License:        GPLv2 with exceptions
 URL:            https://fedorahosted.org/lohit/
 Source0:        https://fedorahosted.org/releases/l/o/lohit/%{fontname}-%{version}.tar.gz
+Source1:        Lohit-Telugu.ttf
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch:      noarch
 BuildRequires: fontforge >= 20080429
@@ -31,9 +32,9 @@ This package provides a free Telugu truetype/opentype font.
 %patch2 -p1 -b .2-hyphen-fix
 %patch3 -p1 -b .3-rendering-cut-fix
 %patch4 -p1 -b .4-added-rupee-symbol
+cp -p %{SOURCE1} .
 
 %build
-make
 
 %install
 rm -fr %{buildroot}
@@ -60,6 +61,9 @@ rm -fr %{buildroot}
 
 
 %changelog
+* Tue Aug 14  2012 Pravin Satpute <psatpute@redhat.com> - 2.4.5-6
+- Resolves: bug 640610
+
 * Wed Jun 06  2011 Pravin Satpute <psatpute@redhat.com> - 2.4.5-5
 - Resolves: bug 691297
 
